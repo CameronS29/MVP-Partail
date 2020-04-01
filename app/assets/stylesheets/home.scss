@@ -1,0 +1,38 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.white-text {
+  color: darkgray;
+}
+.button-group {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a {
+  margin: 5px !important;
+  color: rgb(165, 48, 15) !important;
+  border-color: rgb(165, 48, 15) !important;
+  &:hover {
+    background-color: rgb(165, 48, 15) !important;
+    color: white !important;
+  }
+}
+a.active {
+  background-color: rgb(165, 48, 15) !important;
+  color: white !important;
+}
+.nav-item .active {
+  background-color: rgb(165, 48, 15) !important;
+  color: white !important;
+}
+.nav-link {
+  color: rgb(165, 48, 15) !important;
+}
+a.navbar-brand {
+  color: rgb(165, 48, 15) !important;
+  &:hover {
+    color: rgb(255, 0, 0) !important;
+    background-color: transparent !important;
+  }
+}
