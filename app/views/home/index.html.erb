@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
   <div>
-    <a class="navbar-brand" href="/">Home Page</a>
-    <a class="navbar-brand" href="/">Personal Page</a>
+    <a class="navbar-active" href="/">Home</a>
+    <a class="navbar-brand" href="/personal_page">Personal</a>
   </div>
   <form class="form-inline">
     <%= link_to "Logout", destroy_user_session_path, method: :delete%>
@@ -20,24 +20,23 @@
   </ul>
 
   <hr>
-  
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <% @publications.each do |pub_item| %>
           <% if @selected_publications.find_by('topic' => pub_item) != nil %>
-            <%= link_to(pub_item, 'deselect_topic/' + pub_item, {remote: false, method: :post, class: 'btn active'})%>
+            <%= link_to(pub_item, 'deselect_topic/' + pub_item, {remote: true, method: :post, class: 'btn active', id: pub_item.gsub(' ', '_')})%>
           <% else %>
-            <%= link_to(pub_item, select_topic_path(id: pub_item, topic_type: 1), {remote: false, method: :post, class: 'btn btn-outline-success'})%>
+            <%= link_to(pub_item, select_topic_path(id: pub_item, topic_type: 1), {remote: true, method: :post, class: 'btn btn-outline-success', id: pub_item.gsub(' ', '_')})%>
           <% end %>
         <% end %>
       </div>
 
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <% @companies.each do |comp_item| %>
+        <% @companies.each_with_index do |comp_item, index| %>
           <% if @selected_companies.find_by('topic' => comp_item) != nil %>
-          <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: false, method: :post, class: 'btn active'})%>
+          <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
           <% else %>
-          <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: false, method: :post, class: 'btn btn-outline-success'})%>
+          <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn btn-outline-success', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
           <% end %>
         <% end %>
       </div>

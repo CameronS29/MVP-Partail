@@ -1,0 +1,2 @@
+class Rxcist < ApplicationRecord
+end

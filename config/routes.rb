@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
   post '/deselect_topic/:id', to: 'home#deselect_topic'
   post 'select_topic', to: 'home#select_topic'
+  get 'personal_page', to: 'personal_page#index'
+  post 'scrapping', to: 'personal_page#scrapping'
 end

@@ -36,3 +36,14 @@ a.navbar-brand {
     background-color: transparent !important;
   }
 }
+
+.navbar-active {
+  color: rgb(255, 0, 0) !important;
+  font-weight: 500;
+  font-size: 1.25rem;
+  &:hover {
+    text-decoration: none;
+    background-color: transparent !important;
+    color: rgb(255, 0, 0) !important;
+  }
+}
