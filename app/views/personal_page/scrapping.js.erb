@@ -1,6 +1,6 @@
 <% if @topic_type == "2" %>
 $("#company-scrapping-result").html(`
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-fixed">
         <thead>
             <tr>
                 <th> Title of article or press release </th>
@@ -30,74 +30,78 @@ $("#company-scrapping-result").html(`
 <% else %>
     $("#pubmed-scrapping-result").html(`
         <h6 style="text-align:center;"><%= @topic %> Pubmed results</h6>
-        <table class="table table-striped  table-bordered">
-            <thead>
-                <tr>
-                    <th> Title </th>
-                    <th> First/Last Author </th>
-                    <th> Date </th>
-                    <th> IF </th>
-                    <th> Journal Name </th>
-                    <th> Abstract </th>
-                    <th> Link </th>
-                </tr> 
-            </thead>
-
-            <tbody>
-                <% @pubmed.each do |row| %>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped  table-bordered table-fixed">
+                <thead>
                     <tr>
-                        <td> <%= row.title %> </td>
-                        <td> <%= row.authors %> </td>
-                        <td> <%= row.date %> </td>
-                        <td> <%= row.if %> </td>
-                        <td> <%= row.journal %> </td>
-                        <td> <%= row.abstract %> </td>
-                        <td> <a href="<%= row.url %>"><%= row.url %> </a> </td>
-                    </tr>
-                <%end %>
+                        <th> Title </th>
+                        <th> First/Last Author </th>
+                        <th> Date </th>
+                        <th> IF </th>
+                        <th> Journal Name </th>
+                        <th> Abstract </th>
+                        <th> Link </th>
+                    </tr> 
+                </thead>
 
-                <% if @pubmed.length() ==0 %>
-                    <tr>
-                        <td colspan="7"> No content </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
+                <tbody>
+                    <% @pubmed.each do |row| %>
+                        <tr>
+                            <td> <%= row.title %> </td>
+                            <td> <%= row.authors %> </td>
+                            <td> <%= row.date %> </td>
+                            <td> <%= row.if %> </td>
+                            <td> <%= row.journal %> </td>
+                            <td> <%= row.abstract %> </td>
+                            <td> <a href="<%= row.url %>"><%= row.url %> </a> </td>
+                        </tr>
+                    <%end %>
+
+                    <% if @pubmed.length() ==0 %>
+                        <tr>
+                            <td colspan="7"> No content </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     `)
 
     $("#rxcist-scrapping-result").html(`
         <h6 style="text-align:center;"><%= @topic %> BioRxiv results</h6>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th> Title </th>
-                    <th> First/Last Author </th>
-                    <th> Date </th>
-                    <th> Downloads </th>
-                    <th> Abstract </th>
-                    <th> Link </th>
-                </tr> 
-            </thead>
-
-            <tbody>
-                <% @rxcist.each do |row| %>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped table-bordered table-fixed">
+                <thead>
                     <tr>
-                        <td> <%= row.title %> </td>
-                        <td> <%= row.authors %> </td>
-                        <td> <%= row.date %> </td>
-                        <td> <%= row.downloads %> </td>
-                        <td> <%= row.abstract %> </td>
-                        <td> <a href="<%= row.url %>"><%= row.url %> </a> </td>
-                    </tr>
-                <%end %>
+                        <th> Title </th>
+                        <th> First/Last Author </th>
+                        <th> Date </th>
+                        <th> Downloads </th>
+                        <th> Abstract </th>
+                        <th> Link </th>
+                    </tr> 
+                </thead>
 
-                <% if @pubmed.length() ==0 %>
-                    <tr>
-                        <td colspan="6"> No content </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
+                <tbody>
+                    <% @rxcist.each do |row| %>
+                        <tr>
+                            <td> <%= row.title %> </td>
+                            <td> <%= row.authors %> </td>
+                            <td> <%= row.date %> </td>
+                            <td> <%= row.downloads %> </td>
+                            <td> <%= row.abstract %> </td>
+                            <td> <a href="<%= row.url %>"><%= row.url %> </a> </td>
+                        </tr>
+                    <%end %>
+
+                    <% if @pubmed.length() ==0 %>
+                        <tr>
+                            <td colspan="6"> No content </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     `)
 <% end %>
 $(".btn").removeClass("disabled");
