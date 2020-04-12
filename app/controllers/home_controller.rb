@@ -4,17 +4,17 @@ class HomeController < ApplicationController
         @publications = [
             "\"in vivo genome editing\"",
             "\"CAR T\"",
-            "\"AAV AND immunogenicity\"",
+            "\"AAV\" AND \"immunogenicity\"",
             "aging",
             "\"cystic fibrosis therapies\"",
-            "\"cardiac AND gene therapy\"",
-            "\"regulatory t cell AND therapy\"",
-            "\"Sickle cell AND CRISPR\"",
-            "\"Triple negative breast cancer AND therapy\"",
+            "\"cardiac\" AND \"gene therapy\"",
+            "\"regulatory t cell\" AND \"therapy\"",
+            "\"Sickle cell\" AND \"CRISPR\"",
+            "\"Triple negative breast cancer\" AND \"therapy\"",
             "\"Checkpoint inhibitor and resistance\"",
-            "\"Covid-19 OR SARS-CoV-2\"",
+            "\"Covid-19\" OR \"SARS-CoV-2\"",
             "\"Exosome\"",
-            "\"Nanoparticle delivery OR non-viral delivery\"",
+            "\"Nanoparticle delivery\" OR \"non-viral delivery\"",
             "\"Bacteriophage\"",
             "\"Cell engineering\"",
             "\"Synthetic notch\"",
@@ -24,7 +24,8 @@ class HomeController < ApplicationController
             "\"sarcopenia\"",
             "\"osteoarthritis\"",
             "\"inflammasome\"",
-            "\"interstitial lung\""
+            "\"interstitial lung\"",
+            "\"ovarian cancer\""
         ]
         @companies = [
             "Editas Medicine",
@@ -48,7 +49,17 @@ class HomeController < ApplicationController
             "Navitor Pharmaceuticals",
             "resTOR Bio",
             "Arsenal Bio",
-            "Sonoma Biosciences"
+            "Sonoma Biosciences",
+            "Harpoon Therapeutics",
+            "Black Diamond Therapeutics",
+            "Cabaletta Therapeutics",
+            "TCR2 Therapeutics",
+            "Adaptimmune",
+            "AgeX Therapeutics",
+            "Blueprint Medicines",
+            "Deciphera Therapeutics",
+            "Atara Bio",
+            "Ideaya Biosciences"
         ]
         @company_details = [
             "CRISPR gene editing therapies for rare diseases and immuno-oncology",
@@ -72,7 +83,17 @@ class HomeController < ApplicationController
             "Anti-aging mTOR modulation",
             "Anti-aging mTOR modulation",
             "Genetically engineered immune cells (non-viral delivery) vs. cancer",
-            "Genetically engineered regulatory T cells vs. autoimmune disease"
+            "Genetically engineered regulatory T cells vs. autoimmune disease",
+            "T cell engager therapies vs. ovarian and prostate cancer",
+            "Targeted kinase inhibitors vs. HER2, EGFR cancers",
+            "Chimeric autoantigen receptor therapies vs autoimmune diseases",
+            "Engineered TCR therapies vs. cancer",
+            "",
+            "Cell therapies for age-related disorders",
+            "Targeted kinase inhibitors",
+            "Targeted kinase inhibitors",
+            "Allogeneic t cell therapies vs. cancer/autoimmune dz",
+            "Synthetic lethality/PARP/PARG inhibitors"
         ]
         @selected_publications = UserTopic.where("user_id = ? AND topic_type = 1", current_user.id)
         @selected_companies = UserTopic.where("user_id = ? AND topic_type = 2", current_user.id)

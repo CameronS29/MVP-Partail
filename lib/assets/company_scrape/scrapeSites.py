@@ -203,6 +203,7 @@ def parse_article(target, pattern, limit_date,  results):
     elements = soup
 
     elements = parse_section(elements, pattern[0])
+
     if len(elements) == 0:
         # selenium
         parse_article_with_selenium(target, pattern, limit_date, results)

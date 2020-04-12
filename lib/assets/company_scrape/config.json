@@ -1,5 +1,5 @@
 {
-  "days": 7,
+  "days": 31,
   "websites": [
     {
       "name": "Editas Medicine",
@@ -110,6 +110,56 @@
       "name": "uniQure NV",
       "url": "uniqure.com",
       "real": "http://uniqure.com/investors-newsroom/press-releases.php"
+    },
+    {
+      "name": "Harpoon Therapeutics",
+      "url": "https://ir.harpoontx.com/news-releases",
+      "real": "T cell engager therapies vs. ovarian and prostate cancer"
+    },
+    {
+      "name": "Black Diamond Therapeutics",
+      "url": "https://investors.blackdiamondtherapeutics.com/news-and-events/news-releases",
+      "real": "Targeted kinase inhibitors vs. HER2, EGFR cancers"
+    },
+    {
+      "name": "Cabaletta Therapeutics",
+      "url": "https://investors.cabalettabio.com/news-events/news-releases",
+      "real": "Chimeric autoantigen receptor therapies vs autoimmune diseases"
+    },
+    {
+      "name": "TCR2 Therapeutics",
+      "url": "http://investors.tcr2.com/news-releases",
+      "real": "Engineered TCR therapies vs. cancer"
+    },
+    {
+      "name": "Adaptimmune",
+      "url": "https://ir.adaptimmune.com/news-releases?c=253991&nyo=0&p=irol-news",
+      "real": ""
+    },
+    {
+      "name": "AgeX Therapeutics",
+      "url": "https://investors.agexinc.com/news/default.aspx",
+      "real": "Cell therapies for age-related disorders"
+    },
+    {
+      "name": "Blueprint Medicines",
+      "url": "http://ir.blueprintmedicines.com/news-releases",
+      "real": "Targeted kinase inhibitors"
+    },
+    {
+      "name": "Deciphera Therapeutics",
+      "url": "https://investors.deciphera.com/news-events/press-releases",
+      "real": "Targeted kinase inhibitors"
+    },
+    {
+      "name": "Atara Bio",
+      "url": "https://investors.atarabio.com/news-events",
+      "real": "Allogeneic t cell therapies vs. cancer/autoimmune dz"
+    },
+    {
+      "name": "Ideaya Biosciences",
+      "url": "https://ir.ideayabio.com/news-events/news-releases",
+      "real": "Synthetic lethality/PARP/PARG inhibitors"
     }
   ],
   "sender": "troyks00055@gmail.com",

@@ -22,7 +22,7 @@ CSV.foreach(Rails.root.join('lib/assets/journal_scrape/output/pubmed.csv'), head
     t.save
 end
 
-CSV.foreach(Rails.root.join('lib/assets/journal_scrape/output/rxcist.csv'), headers: true, col_sep: ?;) do |row|
+CSV.foreach(Rails.root.join('lib/assets/journal_scrape/output/rxivist.csv'), headers: true, col_sep: ?;) do |row|
     t = Rxcist.new
     t.query = row[0]
     t.title = row[1]
