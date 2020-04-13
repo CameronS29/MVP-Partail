@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-light">
+  <div>
+    <a class="navbar-active" href="/">Home</a>
+    <a class="navbar-brand" href="/personal_page">Personal</a>
+  </div>
+  <form class="form-inline">
+    <%= link_to "Logout", destroy_user_session_path, method: :delete%>
+  </form>
+</nav>
+
+<div class="container">
+  <h6 class="my-4 px-4 font-weight-light">The below icons represent publication searches (from BioRxiv and PubMed) and company news (press releases and news articles) you can follow based on your personal research interests. Simply click any icon(s) and you will be able to follow that topic or company. <br>Hover over the company icons for a brief description of what they do.</h6>
+  <ul class="nav nav-pills my-4" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Publication</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Companies</a>
+    </li>
+  </ul>
+
+  <hr>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <% @publications.each do |pub_item| %>
+          <% if @selected_publications.find_by('topic' => pub_item) != nil %>
+            <%= link_to(pub_item, 'deselect_topic/' + pub_item, {remote: true, method: :post, class: 'btn active', id: pub_item.gsub(' ', '_')})%>
+          <% else %>
+            <%= link_to(pub_item, select_topic_path(id: pub_item, topic_type: 1), {remote: true, method: :post, class: 'btn', id: pub_item.gsub(' ', '_')})%>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <% @companies.each_with_index do |comp_item, index| %>
+          <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+            <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
+          <% else %>
+            <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>
