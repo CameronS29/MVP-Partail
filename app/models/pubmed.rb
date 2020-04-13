@@ -1,0 +1,2 @@
+class Pubmed < ApplicationRecord
+end

@@ -1,0 +1,3 @@
+$('#<%=raw @button_id.gsub(/(")/, '\\\\\"') %>').toggleClass("active");
+$('#<%=raw @button_id.gsub(/(")/, '\\\\\"') %>').toggleClass("btn-outline-success");
+$(".btn").removeClass("disabled");

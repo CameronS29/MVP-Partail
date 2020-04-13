@@ -1,0 +1,29 @@
+// Place all the styles related to the PersonalPage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.btn-red {
+  margin: 5px !important;
+  color: rgb(165, 48, 15) !important;
+  border-color: rgb(165, 48, 15) !important;
+  &:hover {
+    background-color: rgb(165, 48, 15) !important;
+    color: white !important;
+  }
+}
+
+thead {
+  tr {
+    background-color: rgb(165, 48, 15);
+    color: white;
+  }
+}
+tbody {
+  tr.yellow-highlight {
+    background-color: lightyellow !important;
+  }
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}

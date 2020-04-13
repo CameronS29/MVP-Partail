@@ -1,0 +1,37 @@
+#main {
+    text-align: center;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+}
+
+.search {
+    text-align: center;
+}
+
+.container {
+    padding: 30px;
+    margin: 30px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    width: 50%;
+    height: 400px;
+}
+.head {
+    height: 100px;
+}
+
+.everything-else-head {
+    height: 300px;
+}
+
+.everything-else-tail {
+    height: 300px;
+}
+
