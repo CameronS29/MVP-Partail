@@ -57,7 +57,7 @@ $("#company-scrapping-result").html(`
                                 <td> <%= row.if %> </td>
                                 <td> <%= row.journal %> </td>
                                 <td> <%= row.abstract %> </td>
-                                <td> <%= row.url %>  </td>
+                                <td> <a href="<%= row.url %>" style="max-width: 100%"> <%= row.url %></a>  </td>
                                 <td> <%= row.score %> </td>
                             </tr>
                         <% else %>
@@ -68,7 +68,7 @@ $("#company-scrapping-result").html(`
                                 <td> <%= row.if %> </td>
                                 <td> <%= row.journal %> </td>
                                 <td> <%= row.abstract %> </td>
-                                <td> <%= row.url %> </td>
+                                <td> <a href="<%= row.url %>" style="max-width: 100%"> <%= row.url %></a> </td>
                                 <td> <%= row.score %> </td>
                             </tr>
                         <% end %>
@@ -105,7 +105,7 @@ $("#company-scrapping-result").html(`
                                 <td> <%= row.date %> </td>
                                 <td> <%= row.downloads %> </td>
                                 <td> <%= row.abstract %> </td>
-                                <td> <%= row.url %> </td>
+                                <td> <a href="<%= row.url %>" style="max-width: 100%"> <%= row.url %></a> </td>
                                 <td> <%= row.score %> </td>
                             </tr>
                         <% else %>
@@ -115,7 +115,7 @@ $("#company-scrapping-result").html(`
                                 <td> <%= row.date %> </td>
                                 <td> <%= row.downloads %> </td>
                                 <td> <%= row.abstract %> </td>
-                                <td> <%= row.url %> </td>
+                                <td> <a href="<%= row.url %>" style="max-width: 100%"> <%= row.url %></a> </td>
                                 <td> <%= row.score %> </td>
                             </tr>
                         <% end %>
