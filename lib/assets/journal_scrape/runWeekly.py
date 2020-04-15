@@ -40,6 +40,8 @@ def load_queries():
 
 
 if __name__ == '__main__':
+    if datetime.datetime.today().weekday() != 4:
+        sys.exit(0)
     dirname = os.path.dirname(__file__)
     data_queries = load_queries()
 

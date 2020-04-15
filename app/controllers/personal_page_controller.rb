@@ -15,8 +15,8 @@ class PersonalPageController < ApplicationController
 
         print path
         if @topic_type == "1"
-            @pubmed = Pubmed.where("query like ?", '%' + @topic)
-            @rxcist = Rxcist.where("query like ?", '%' + @topic)
+            @pubmed = Pubmed.where("query like ?", '%' + @topic + '%')
+            @rxcist = Rxcist.where("query like ?", '%' + @topic + '%')
             print @pubmed
         else
             path = path + '/company_scrape/script.py';
