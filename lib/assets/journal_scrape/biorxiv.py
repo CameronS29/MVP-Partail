@@ -313,7 +313,7 @@ def get_pmc_article(pmc_id, search_term):
                     relevance_score=relevance_score,
                     relevance_score_rough=relevance_score_rough
                       )
-                except metapub.exceptions.MetaPubError:
+    except metapub.exceptions.MetaPubError:
         #TODO: Find some better means of retrieval for articles without a pubmed ID (creates metapub error)
         article = PMCSearchResult(pubmed_id="Unknown - Retrieval Error, only exists in PMIC",
                       pmc_id=pmc_id,
@@ -328,7 +328,7 @@ def get_pmc_article(pmc_id, search_term):
                       relevance_score_rough=0
                       )
     except:
-        article = ""            
+        article = ""
     return article
 
 # Pull all of the pubmed article IDs and then retrieve the article for each.

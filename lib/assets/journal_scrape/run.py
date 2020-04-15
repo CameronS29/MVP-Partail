@@ -27,7 +27,6 @@ def load_queries():
 
     cell_list = wks.range('A2:A30')
 
-    
     #print(cell_list)
 
     #data = pd.read_csv(filenae)
