@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
+require 'date'
+
+wday = Date.today.wday
+if wday != 5
+    exit
+end
 
 #csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1', quote_char: "\x00")
 CSV.foreach(Rails.root.join('lib/assets/journal_scrape/output/pubmed.csv'), headers: true, col_sep: ?;) do |row|
