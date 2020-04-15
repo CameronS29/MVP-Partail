@@ -328,7 +328,8 @@ def get_pmc_article(pmc_id, search_term):
                       relevance_score_rough=0
                       )
     except:
-        article = ""    return article
+        article = ""
+    return article
 
 # Pull all of the pubmed article IDs and then retrieve the article for each.
 #
