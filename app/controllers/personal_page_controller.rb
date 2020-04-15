@@ -13,6 +13,7 @@ class PersonalPageController < ApplicationController
         @topic_type = request.params[:topic_type]
         path = Rails.root.to_s + '/lib/assets'
 
+        print path
         if @topic_type == "1"
             @pubmed = Pubmed.where("query like ?", '%' + @topic)
             @rxcist = Rxcist.where("query like ?", '%' + @topic)
