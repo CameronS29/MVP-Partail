@@ -22,6 +22,8 @@ import numpy as np
 import csv
 import sys
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 def sendGridEmail(table, sender, receiver, key):
     #    print(table)
@@ -87,22 +89,38 @@ def makeTable(websites, results):
 
 
 def job():
-    with open(os.path.abspath("lib/assets/company_scrape/config.json")) as f:
-        data = json.loads(f.read().strip())
 
-    days = data["days"]
-    websites = list(filter(lambda x: x['name'] == sys.argv[1], data['websites']))
-    indexes = [i for i, n in enumerate(data['websites']) if n['name'] == sys.argv[1]]
-    sender = data["sender"]
-    receiver = data["receiver"]
-    sendgrid_key = data["sendgrid"]
+    dirname = os.path.dirname(__file__)
+    print(os.path.join(dirname, 'company_scraping.csv'))
+# use creds to create a client to interact with the Google Drive API
+    scope = ['https://spreadsheets.google.com/feeds']
+    creds = ServiceAccountCredentials.from_json_keyfile_name('lib/assets/company_scrape/credentials.json', scope)
+    client = gspread.authorize(creds)
 
-    results = []
+    # Find a workbook by name and open the first sheet
+    # Make sure you use the right name here.
+    sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/13hPqfUV824kJU6Wr7x_Uvnr0zTkVs_uJrJEHt8eH0L8/edit?ts=5e9a6e7d#gid=0&fvid=731065210").sheet1
+
+    # Extract and print all of the values
+    data = {'websites': sheet.get_all_records()}
+
+    days = 31
+
+    websites = data['websites']
+
+    results = [["company", "name", "title", "link"]]
     # results += endpts(websites, days)
     # results += fierceBioTech(websites, days)
-    results += scrapeSites(websites, days, indexes)
-    #table = makeTable(websites, results)
+    results += scrapeSites(websites, days)
     print(results)
+
+    myFile = open(os.path.join(dirname, 'company_scraping.csv'), 'w')
+
+    with myFile:
+        writer = csv.writer(myFile)
+        writer.writerows(results)
+    #table = makeTable(websites, results)
+
 #    sendGridEmail(table, sender, receiver, sendgrid_key)
 
 

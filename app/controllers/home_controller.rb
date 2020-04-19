@@ -27,74 +27,102 @@ class HomeController < ApplicationController
             "\"interstitial lung\"",
             "\"ovarian cancer\""
         ]
-        @companies = [
-            "Editas Medicine",
-            "Intellia Therapeutics",
-            "CRISPR Therapeutics",
-            "Beam Therapeutics",
-            "Bluebird Bio",
-            "uniQure NV",
-            "Sarepta Therapeutics",
-            "RegenxBio",
-            "MeiraGTx",
-            "Orchard Therapeutics",
-            "Axovant Gene Therapies",
-            "Passage Bio",
-            "Rocket Pharmaceuticals",
-            "Decibel Therapeutics",
-            "Sana Biotechnology",
-            "Century Therapeutics",
-            "Allogene Therapeutics",
-            "Unity Biotechnology",
-            "Navitor Pharmaceuticals",
-            "resTOR Bio",
-            "Arsenal Bio",
-            "Sonoma Biosciences",
-            "Harpoon Therapeutics",
-            "Black Diamond Therapeutics",
-            "Cabaletta Therapeutics",
-            "TCR2 Therapeutics",
-            "Adaptimmune",
-            "AgeX Therapeutics",
-            "Blueprint Medicines",
-            "Deciphera Therapeutics",
-            "Atara Bio",
-            "Ideaya Biosciences"
-        ]
-        @company_details = [
-            "CRISPR gene editing therapies for rare diseases and immuno-oncology",
-            "CRISPR gene editing therapies for rare diseases and immuno-oncology",
-            "CRISPR gene editing therapies for rare diseases and immuno-oncology",
-            "CRISPR base editing for rare diseases",
-            "Gene therapies for rare diseases and CAR-T for oncology",
-            "Gene therapies for hemophilia B and Huntington's",
-            "Gene therapy, RNA therapy, and gene editing approaches for rare neuromuscular/CNS diseases like DMD",
-            "AAV gene therapy platform for rare and common diseases, including Wet AMD",
-            "Gene therapies for inherited retinal diseases and neurological disorders such as Parkinsons",
-            "Gene therapies for rare autoimmune disorders",
-            "Gene therapies for neurological disorders",
-            "Gene therapies for neurological disorders",
-            "Gene therapies for rare blood disorders and genetic heart conditions",
-            "Hearing loss disorder gene therapies ",
-            "Cell therapy platform",
-            "Oncology cell therapy iPSC platform",
-            "Allogeneic CAR-T platform",
-            "Anti-aging senolytics",
-            "Anti-aging mTOR modulation",
-            "Anti-aging mTOR modulation",
-            "Genetically engineered immune cells (non-viral delivery) vs. cancer",
-            "Genetically engineered regulatory T cells vs. autoimmune disease",
-            "T cell engager therapies vs. ovarian and prostate cancer",
-            "Targeted kinase inhibitors vs. HER2, EGFR cancers",
-            "Chimeric autoantigen receptor therapies vs autoimmune diseases",
-            "Engineered TCR therapies vs. cancer",
-            "",
-            "Cell therapies for age-related disorders",
-            "Targeted kinase inhibitors",
-            "Targeted kinase inhibitors",
-            "Allogeneic t cell therapies vs. cancer/autoimmune dz",
-            "Synthetic lethality/PARP/PARG inhibitors"
-        ]
+        @companies = {
+            "Gene editing" => [
+                "Editas Medicine",
+                "Intellia Therapeutics",
+                "CRISPR Therapeutics",
+                "Beam Therapeutics"
+            ],
+            "Gene transfer" => [
+                "Bluebird Bio",
+                "uniQure NV",
+                "Sarepta Therapeutics",
+                "RegenxBio",
+                "MeiraGTx",
+                "Orchard Therapeutics",
+                "Axovant Gene Therapies",
+                "Passage Bio",
+                "Rocket Pharmaceuticals",
+                "Decibel Therapeutics"
+            ],
+            "Cell Therapy" => [
+                "Sana Biotechnology",
+                "Century Therapeutics",
+                "Allogene Therapeutics",
+                "Arsenal Bio",
+                "Sonoma Biosciences",
+                "Harpoon Therapeutics",
+                "Cabaletta Therapeutics",
+                "TCR2 Therapeutics",
+                "Adaptimmune",
+                "AgeX Therapeutics",
+                "Moderna",
+                "Atara Bio"
+            ],
+            "Multi-modality" => [
+                "Vir Bio"
+            ],
+            "Targeted small molecules" => [
+                "Black Diamond Therapeutics",
+                "Blueprint Medicines",
+                "Deciphera Therapeutics",
+                "Ideaya Biosciences"
+            ],
+            "Small molecules" => [
+                "Unity Biotechnology",
+                "Navitor Pharmaceuticals",
+                "resTOR Bio"
+            ]
+        }
+        @company_detail = {
+            "Cell Therapy" => [
+                "Cell therapy platform",
+                "Oncology cell therapy iPSC platform",
+                "Allogeneic CAR-T platform",
+                "Genetically engineered immune cells (non-viral delivery) vs. cancer",
+                "Genetically engineered regulatory T cells vs. autoimmune diseases",
+                "T cell engager therapies vs. ovarian and prostate cancer",
+                "Chimeric autoantigen receptor therapies vs autoimmune diseases",
+                "Engineered TCR therapies vs. cancer",
+                "",
+                "Cell therapies for age-related disorders",
+                "mRNA therapy platform vs. wide range of dz",
+                "Allogeneic t cell therapies vs. cancer/autoimmune dz"
+            ],
+            "Gene editing" => [
+                "CRISPR gene editing therapies for rare diseases and immuno-oncology",
+                "CRISPR gene editing therapies for rare diseases and immuno-oncology",
+                "CRISPR gene editing therapies for rare diseases and immuno-oncology",
+                "CRISPR base editing for rare diseases"
+            ],
+            "Gene transfer" => [
+                "Gene therapies for rare diseases and CAR-T for oncology",
+                "Gene therapies for hemophilia B and Huntington's",
+                "Gene therapy, RNA therapy, and gene editing approaches for rare neuromuscular/CNS diseases like DMD",
+                "AAV gene therapy platform for rare and common diseases, including Wet AMD",
+                "Gene therapies for inherited retinal diseases and neurological disorders such as Parkinsons",
+                "Gene therapies for rare autoimmune disorders",
+                "Gene therapies for neurological disorders",
+                "Gene therapies for neurological disorders",
+                "Gene therapies for rare blood disorders and genetic heart conditions",
+                "Hearing loss disorder gene therapies"
+            ],
+            "Multi-modality" => [
+                "Infectious disease therapies"
+            ],
+            "Small molecules" => [
+                "Anti-aging senolytics",
+                "Anti-aging mTOR modulation",
+                "Anti-aging mTOR modulation"
+            ],
+            "Targeted small molecules" => [
+                "Targeted kinase inhibitors vs. HER2, EGFR cancers",
+                "Targeted kinase inhibitors",
+                "Targeted kinase inhibitors",
+                "Synthetic lethality/PARP/PARG inhibitors"
+            ]   
+        }
         @selected_publications = UserTopic.where("user_id = ? AND topic_type = 1", current_user.id)
         @selected_companies = UserTopic.where("user_id = ? AND topic_type = 2", current_user.id)
     end

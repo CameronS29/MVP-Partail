@@ -1,0 +1,2 @@
+class CompanyScraping < ApplicationRecord
+end

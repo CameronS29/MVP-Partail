@@ -22,7 +22,7 @@ def eparse_page(targets, pagenum, d, results, driver):
 
     condition = "Last week"
     if (d > 7):
-        condition = "4 months ago"
+        condition = "Last month"
 
     sources = "https://www.endpts.com/news/page/"
     p_sources = sources + str(pagenum)

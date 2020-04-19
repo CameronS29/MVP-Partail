@@ -40,6 +40,19 @@ parse_pattern = [
     ["div.news-items", "span.date", "", "%b %d, %Y"],
     ["article.media", "time", "a", "%b %d, %Y"],
     [".PressRelease", "span.PressRelease-NewsDate", "a", "%b %d, %Y %H:%M"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%m/%d/%y"],
+    ["div.news-row", "h3.news_date", "a", "%b %d, %Y"],
+    ["tr", "time", "a", "%b %d, %Y"],
+    ["div.module_item", "span.module_date-text", "a", "%m/%d/%Y"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    ["tr", "td.nir-widget--news--date-time", "a", "%m/%d/%y"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+#
+    ["article.node--nir-news--nir-widget-list", "div.press_date", "a", "%B %d, %Y"],
+    ["article.media", "time", "a", "%b %d, %Y  %H:%M %Z"],
+    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
 ]
 
 def get_links(url, search = "press release"):
@@ -201,9 +214,7 @@ def parse_article(target, pattern, limit_date,  results):
     soup = BeautifulSoup(page.text, "lxml")
 
     elements = soup
-
     elements = parse_section(elements, pattern[0])
-
     if len(elements) == 0:
         # selenium
         parse_article_with_selenium(target, pattern, limit_date, results)
@@ -247,7 +258,6 @@ def parse_article(target, pattern, limit_date,  results):
                 press_date = datetime.strptime(div_date.get_text().strip(), pattern[3])
         except:
             continue
-        
         if not TEST_DATE and (press_date < limit_date):
             break
         # print(div_date[0].get_text())
@@ -275,7 +285,7 @@ def parse_article(target, pattern, limit_date,  results):
 
     # result_file.close()
 
-def scrapeSites(targets, days, indexes):
+def scrapeSites(targets, days):
     
     targets = [{'name': x['name'], 'url': x['url'].lower(), 'press': 'real' in x and  x['real'].lower() or ''} for x in targets]
     
@@ -289,9 +299,9 @@ def scrapeSites(targets, days, indexes):
                 continue
             
             if target["name"] == "Navitor Pharmaceuticals":
-                parse_article_with_selenium(target, parse_pattern[indexes[i]], d, results)
+                parse_article_with_selenium(target, parse_pattern[i], d, results)
             else:
-                parse_article(target, parse_pattern[indexes[i]], d, results)
+                parse_article(target, parse_pattern[i], d, results)
         except:
             i += 1
             continue

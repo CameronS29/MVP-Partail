@@ -34,13 +34,77 @@
       </div>
 
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <% @companies.each_with_index do |comp_item, index| %>
-          <% if @selected_companies.find_by('topic' => comp_item) != nil %>
-            <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
-          <% else %>
-            <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_details[index], id: comp_item.gsub(' ', '_')})%>
-          <% end %>
-        <% end %>
+        <div class="row">
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-cell-therapy" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <% @companies["Cell Therapy"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Cell Therapy"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Cell Therapy"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="tab-pane fade" id="v-pills-gene-editing" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <% @companies["Gene editing"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Gene editing"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Gene editing"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>   
+              </div>
+              <div class="tab-pane fade" id="v-pills-gene-transfer" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <% @companies["Gene transfer"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Gene transfer"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Gene transfer"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>    
+              </div>
+              <div class="tab-pane fade" id="v-pills-multi-modality" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <% @companies["Multi-modality"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Multi-modality"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Multi-modality"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="tab-pane fade" id="v-pills-multi-small-molecules" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <% @companies["Small molecules"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Small molecules"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Small molecules"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="tab-pane fade" id="v-pills-multi-targeted-small-molecules" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <% @companies["Targeted small molecules"].each_with_index do |comp_item, index| %>
+                  <% if @selected_companies.find_by('topic' => comp_item) != nil %>
+                    <%= link_to(comp_item, 'deselect_topic/' + comp_item, {remote: true, method: :post, class: 'btn active', title: @company_detail["Targeted small molecules"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% else %>
+                    <%= link_to(comp_item, select_topic_path(id: comp_item, topic_type: 2), {remote: true, method: :post, class: 'btn', title: @company_detail["Targeted small molecules"][index], id: comp_item.gsub(' ', '_')})%>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-cell-therapy" role="tab" aria-controls="v-pills-cell-therapy" aria-selected="true">Cell Therapy</a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-gene-editing" role="tab" aria-controls="v-pills-gene-editing" aria-selected="false">Gene Editing</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-gene-transfer" role="tab" aria-controls="v-pills-gene-transfer" aria-selected="false">Gene Transfer</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-multi-modality" role="tab" aria-controls="v-pills-multi-modality" aria-selected="false">Multi-modality</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-multi-small-molecules" role="tab" aria-controls="v-pills-small-molecules" aria-selected="false">Small molecules</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-multi-targeted-small-molecules" role="tab" aria-controls="v-pills-targeted-small-molecules" aria-selected="false">Targeted small molecules</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 </div>

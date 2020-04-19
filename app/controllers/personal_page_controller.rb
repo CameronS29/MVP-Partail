@@ -19,9 +19,7 @@ class PersonalPageController < ApplicationController
             @rxcist = Rxcist.where("query like ?", '%' + @topic + '%')
             print @pubmed
         else
-            path = path + '/company_scrape/script.py';
-            @scrapping_result = `python3 #{path} '#{@topic}'`
-            @scrapping_result = eval(@scrapping_result)
+            @scrapping_result = CompanyScraping.where("company like ?", '%' + @topic + '%')
         end
 
         respond_to do |format|
