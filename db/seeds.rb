@@ -9,7 +9,7 @@ require 'csv'
 require 'date'
 
 wday = Date.today.wday
-if wday == ENV["day"]
+if wday == ENV["day"].to_i
     #csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1', quote_char: "\x00")
     Pubmed.delete_all
     CSV.foreach(Rails.root.join('lib/assets/journal_scrape/output/pubmed.csv'), headers: true, col_sep: ?;) do |row|
