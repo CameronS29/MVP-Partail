@@ -16,44 +16,42 @@ from selenium.common.exceptions import TimeoutException
 import os
 
 TEST_DATE = False
-
-parse_pattern = [
-    ["article.node--type-nir-news", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    [["div.item-list", "div.wpb_wrapper"], "p:0", "a", "%b %d, %Y"],
-    ["div.cell", "h5.blue", "a", "%b %d, %Y"],
-    ["article.node--type-nir-news", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    [[".newspress", "tr"], "div.nir-widget--news--date-time", "a", "%m/%d/%y"],    
-    [["table.news-table", "tr"], "td.views-field-field-nir-date", "a", "%m/%d/%y"],
-    [".tg-item-content-holder.tg-dark.standard-format", "span.tg-item-date", "a", "%m/%d/%y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ["article.node--type-nir-news.node--view-mode-nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
-    [["div.item-list", "div.col"], ".field--name-field-nir-news-date", "a", "%m.%d.%Y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
-    [["div.group-year", "div.article"], "p.date", "a", "%B %d, %Y"],
-    ["div.category-press-release", "time", "a", "%B %d, %Y"],
-    ["h3.leading-normal", ".leading-tight", "a", "%Y/%m/%d", "div"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    [["table.nirtable", "tr.node--nir-news--nir-widget-list"], "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ['div.newsPub', "div.newsPub", "a", "%B %d, %Y", "div.newsDate"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
-    ["div.news-items", "span.date", "", "%b %d, %Y"],
-    ["article.media", "time", "a", "%b %d, %Y"],
-    [".PressRelease", "span.PressRelease-NewsDate", "a", "%b %d, %Y %H:%M"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%m/%d/%y"],
-    ["div.news-row", "h3.news_date", "a", "%b %d, %Y"],
-    ["tr", "time", "a", "%b %d, %Y"],
-    ["div.module_item", "span.module_date-text", "a", "%m/%d/%Y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-    ["tr", "td.nir-widget--news--date-time", "a", "%m/%d/%y"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-#
-    ["article.node--nir-news--nir-widget-list", "div.press_date", "a", "%B %d, %Y"],
-    ["article.media", "time", "a", "%b %d, %Y  %H:%M %Z"],
-    ["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
-]
+parse_pattern = {
+    "Editas Medicine":["article.node--type-nir-news", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Intellia Therapeutics":[["div.item-list", "div.wpb_wrapper"], "p:0", "a", "%b %d, %Y"],
+    "CRISPR Therapeutics":["div.cell", "h5.blue", "a", "%b %d, %Y"],
+    "Beam Therapeutics":["article.node--type-nir-news", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Bluebird Bio":[[".newspress", "tr"], "div.nir-widget--news--date-time", "a", "%m/%d/%y"],    
+    "Sarepta Therapeutics":[["table.news-table", "tr"], "td.views-field-field-nir-date", "a", "%m/%d/%y"],
+    "RegenxBio":[".tg-item-content-holder.tg-dark.standard-format", "span.tg-item-date", "a", "%m/%d/%y"],
+    "MeiraGTx":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Orchard Therapeutics":["article.node--type-nir-news.node--view-mode-nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
+    "Axovant Gene Therapies":[["div.item-list", "div.col"], ".field--name-field-nir-news-date", "a", "%m.%d.%Y"],
+    "Passage Bio":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Rocket Pharmaceuticals":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
+    "Decibel Therapeutics":[["div.group-year", "div.article"], "p.date", "a", "%B %d, %Y"],
+    "Sana Biotechnology":["div.category-press-release", "time", "a", "%B %d, %Y"],
+    "Century Therapeutics":["h3.leading-normal", ".leading-tight", "a", "%Y/%m/%d", "div"],
+    "Allogene Therapeutics":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Unity Biotechnology":[["table.nirtable", "tr.node--nir-news--nir-widget-list"], "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Navitor Pharmaceuticals":['div.newsPub', "div.newsPub", "a", "%B %d, %Y", "div.newsDate"],
+    "resTOR Bio":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%b %d, %Y"],
+    "Arsenal Bio":["div.news-items", "span.date", "", "%b %d, %Y"],
+    "Sonoma Biosciences":["article.media", "time", "a", "%b %d, %Y"],
+    "uniQure NV":[".PressRelease", "span.PressRelease-NewsDate", "a", "%b %d, %Y %H:%M"],
+    "Harpoon Therapeutics":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Black Diamond Therapeutics":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Cabaletta Therapeutics":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%m/%d/%y"],
+    "TCR2 Therapeutics":["div.news-row", "h3.news_date", "a", "%b %d, %Y"],
+    "Adaptimmune":["tr", "time", "a", "%b %d, %Y"],
+    "AgeX Therapeutics":["div.module_item", "span.module_date-text", "a", "%m/%d/%Y"],
+    "Moderna":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Vir Bio":["tr", "td.nir-widget--news--date-time", "a", "%m/%d/%y"],
+    "Blueprint Medicines":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+    "Deciphera Therapeutics":["article.node--nir-news--nir-widget-list", "div.press_date", "a", "%B %d, %Y"],
+    "Atara Bio":["article.media", "time", "a", "%b %d, %Y  %H:%M %Z"],
+    "Ideaya Biosciences":["article.node--nir-news--nir-widget-list", "div.nir-widget--news--date-time", "a", "%B %d, %Y"],
+}
 
 def get_links(url, search = "press release"):
     page = requests.get(
@@ -293,15 +291,14 @@ def scrapeSites(targets, days):
     i = 0
     results = []
     for target in targets:
-
         try:        
             if target["press"] == "":
                 continue
             
             if target["name"] == "Navitor Pharmaceuticals":
-                parse_article_with_selenium(target, parse_pattern[i], d, results)
+                parse_article_with_selenium(target, parse_pattern[target['name']], d, results)
             else:
-                parse_article(target, parse_pattern[i], d, results)
+                parse_article(target, parse_pattern[target['name']], d, results)
         except:
             i += 1
             continue

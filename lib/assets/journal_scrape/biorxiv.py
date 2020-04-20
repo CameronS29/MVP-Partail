@@ -296,7 +296,7 @@ def get_pmc_article(pmc_id, search_term):
     try:
         article_raw = fetch.article_by_pmcid(pmc_id) 
        
-      #  print(vars(article_raw)) #for debugging
+        print(vars(article_raw)) #for debugging
         relevance_score = get_relevance_score_pmc(article_raw, search_term) or 0
         relevance_score_rough = get_relevance_score_rough_pmc(article_raw, search_term) or 0
         authors=[]
@@ -312,7 +312,7 @@ def get_pmc_article(pmc_id, search_term):
                     abstract=article_raw.abstract,
                     relevance_score=relevance_score,
                     relevance_score_rough=relevance_score_rough
-                      )
+                )
     except metapub.exceptions.MetaPubError:
         #TODO: Find some better means of retrieval for articles without a pubmed ID (creates metapub error)
         article = PMCSearchResult(pubmed_id="Unknown - Retrieval Error, only exists in PMIC",
