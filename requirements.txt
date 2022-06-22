@@ -29,7 +29,7 @@ jdcal==1.4.1
 lazy-object-proxy==1.4.3
 lxml==4.5.0
 mccabe==0.6.1
-numpy==1.18.1
+numpy==1.22.0
 openpyxl==3.0.3
 parse==1.15.0
 parsel==1.5.2
